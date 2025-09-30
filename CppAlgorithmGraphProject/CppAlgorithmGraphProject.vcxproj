@@ -126,13 +126,13 @@
     <ClCompile Include="adjacency_list.cpp" />
     <ClCompile Include="adjacency_matrix.cpp" />
     <ClCompile Include="CppAlgorithmGraphProject.cpp" />
-    <ClCompile Include="edgrs_list.cpp" />
+    <ClCompile Include="edgers_list.cpp" />
     <ClCompile Include="graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="adjacency_list.h" />
     <ClInclude Include="adjacency_matrix.h" />
-    <ClInclude Include="edgrs_list.h" />
+    <ClInclude Include="edgers_list.h" />
     <ClInclude Include="graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,6 @@
 #pragma once
 #include "graph.h"
-class edgrs_list : public graph
+class edgers_list : public graph
 {
 };
 
