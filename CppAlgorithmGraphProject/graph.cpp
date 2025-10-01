@@ -20,3 +20,9 @@ int graph::vertices() { return _vertexes; }
 
 int graph::edges() { return _edges; }
 
+int graph::vertex_index(std::string vertex)
+{
+	return std::distance(_vertex_names.begin(),
+		std::ranges::find(_vertex_names, vertex));
+}
+

@@ -36,29 +36,17 @@ void adjacency_matrix::add_edge(int vertex_one, int vertex_two)
 
 void adjacency_matrix::add_edge(std::string vertex_one, int vertex_two)
 {
-	int vertex_one_index 
-		= std::distance(_vertex_names.begin(),
-						std::ranges::find(_vertex_names, vertex_one));
-	this->add_edge(vertex_one_index, vertex_two);
+	this->add_edge(vertex_index(vertex_one), vertex_two);
 }
 
 void adjacency_matrix::add_edge(int vertex_one, std::string vertex_two)
 {
-	int vertex_two_index
-		= std::distance(_vertex_names.begin(),
-			std::ranges::find(_vertex_names, vertex_two));
-	this->add_edge(vertex_one, vertex_two_index);
+	this->add_edge(vertex_one, vertex_index(vertex_two));
 }
 
 void adjacency_matrix::add_edge(std::string vertex_one, std::string vertex_two)
 {
-	int vertex_one_index
-		= std::distance(_vertex_names.begin(),
-			std::ranges::find(_vertex_names, vertex_one));
-	int vertex_two_index
-		= std::distance(_vertex_names.begin(),
-			std::ranges::find(_vertex_names, vertex_two));
-	this->add_edge(vertex_one_index, vertex_two_index);
+	this->add_edge(vertex_index(vertex_one), vertex_index(vertex_two));
 }
 
 int adjacency_matrix::add_vertex()
@@ -99,6 +87,62 @@ int adjacency_matrix::remove_vertex(int vertex)
 	return _vertexes;
 }
 
+int adjacency_matrix::remove_vertex(std::string vertex)
+{
+	return this->remove_vertex(vertex_index(vertex));
+}
+
+bool adjacency_matrix::adjacent(int vertex_one, int vertex_two)
+{
+	return _matrix[vertex_one][vertex_two];
+}
+
+bool adjacency_matrix::adjacent(std::string vertex_one, int vertex_two)
+{
+	return this->adjacent(vertex_index(vertex_one), vertex_two);
+}
+
+bool adjacency_matrix::adjacent(int vertex_one, std::string vertex_two)
+{
+	return this->adjacent(vertex_one, vertex_index(vertex_two));
+}
+
+bool adjacency_matrix::adjacent(std::string vertex_one, std::string vertex_two)
+{
+	return this->adjacent(vertex_index(vertex_one), vertex_index(vertex_two));
+}
+
+std::vector<int> adjacency_matrix::neighbors(int vertex)
+{
+	std::vector<int> neighbors;
+	for (int i{}; i < _vertexes; i++)
+		if (i != vertex && _matrix[vertex][i])
+			neighbors.push_back(i);
+	return neighbors;
+}
+
+std::vector<int> adjacency_matrix::neighbors(std::string vertex)
+{
+	return this->neighbors(vertex_index(vertex));
+}
+
+std::vector<std::string> adjacency_matrix::neighbors_names(int vertex)
+{
+	std::vector<std::string> neighbors;
+
+	for (int i{}; i < _vertexes; i++)
+		if (i != vertex && _matrix[vertex][i])
+			neighbors.push_back(_vertex_names[i]);
+	return neighbors;
+}
+
+std::vector<std::string> adjacency_matrix::neighbors_names(std::string vertex)
+{
+	return this->neighbors_names(vertex_index(vertex));
+}
+
+
+
 void adjacency_matrix::remove_edge(int vertex_one, int vertex_two)
 {
 	if (vertex_one < 0 || vertex_one >= _vertexes
@@ -109,6 +153,33 @@ void adjacency_matrix::remove_edge(int vertex_one, int vertex_two)
 	_matrix[vertex_two][vertex_one] = 0;
 
 	_edges--;
+}
+
+void adjacency_matrix::remove_edge(std::string vertex_one, int vertex_two)
+{
+	int vertex_one_index
+		= std::distance(_vertex_names.begin(),
+			std::ranges::find(_vertex_names, vertex_one));
+	this->remove_edge(vertex_one_index, vertex_two);
+}
+
+void adjacency_matrix::remove_edge(int vertex_one, std::string vertex_two)
+{
+	int vertex_two_index
+		= std::distance(_vertex_names.begin(),
+			std::ranges::find(_vertex_names, vertex_two));
+	this->remove_edge(vertex_one, vertex_two_index);
+}
+
+void adjacency_matrix::remove_edge(std::string vertex_one, std::string vertex_two)
+{
+	int vertex_one_index
+		= std::distance(_vertex_names.begin(),
+			std::ranges::find(_vertex_names, vertex_one));
+	int vertex_two_index
+		= std::distance(_vertex_names.begin(),
+			std::ranges::find(_vertex_names, vertex_two));
+	this->remove_edge(vertex_one_index, vertex_two_index);
 }
 
 std::ostream& operator<<(std::ostream& out, const adjacency_matrix& graph)

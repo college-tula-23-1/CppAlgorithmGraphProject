@@ -20,22 +20,31 @@ public:
 	adjacency_matrix(names vertex_names);
 
 	void add_edge(int vertex_one, int vertex_two) override;
-	void add_edge(std::string vertex_one, int vertex_two);
-	void add_edge(int vertex_one, std::string vertex_two);
-	void add_edge(std::string vertex_one, std::string vertex_two);
+	void add_edge(std::string vertex_one, int vertex_two) override;
+	void add_edge(int vertex_one, std::string vertex_two) override;
+	void add_edge(std::string vertex_one, std::string vertex_two) override;
 
 	int add_vertex() override;
-	int add_vertex(std::string vertex);
+	int add_vertex(std::string vertex) override;
 
 	void remove_edge(int vertex_one, int vertex_two) override;
-	
-	void remove_edge(std::string vertex_one, int vertex_two);
-	void remove_edge(int vertex_one, std::string vertex_two);
-	void remove_edge(std::string vertex_one, std::string vertex_two);
+	void remove_edge(std::string vertex_one, int vertex_two) override;
+	void remove_edge(int vertex_one, std::string vertex_two) override;
+	void remove_edge(std::string vertex_one, std::string vertex_two) override;
 
 	int remove_vertex(int vertex) override;
-	int remove_vertex(std::string vertex);
+	int remove_vertex(std::string vertex) override;
+
+	bool adjacent(int vertex_one, int vertex_two) override;
+	bool adjacent(std::string vertex_one, int vertex_two) override;
+	bool adjacent(int vertex_one, std::string vertex_two) override;
+	bool adjacent(std::string vertex_one, std::string vertex_two) override;
 	
+	std::vector<int> neighbors(int vertex) override;
+	std::vector<int> neighbors(std::string vertex) override;
+
+	std::vector<std::string> neighbors_names(int vertex) override;
+	std::vector<std::string> neighbors_names(std::string vertex) override;
 
 	friend std::ostream& operator<<(
 		std::ostream& out,
