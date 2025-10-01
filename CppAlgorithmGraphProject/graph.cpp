@@ -2,10 +2,15 @@
 
 graph::graph() : graph(0, 0) {}
 
-graph::graph(int vertices, int edges)
-	: _vertices{ vertices }, _edges{ edges } {}
+graph::graph(int vertexes, int edges)
+	: _vertexes{ vertexes }, _edges{ edges } {}
 
-int graph::vertices() { return _vertices; }
+graph::graph(names vertex_names)
+	: _vertexes{  }
+{
+}
+
+int graph::vertices() { return _vertexes; }
 
 int graph::edges() { return _edges; }
 
