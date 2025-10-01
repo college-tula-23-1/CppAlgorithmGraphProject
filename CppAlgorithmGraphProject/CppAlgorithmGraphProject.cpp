@@ -4,7 +4,7 @@
 
 int main()
 {
-    adjacency_matrix graph(5);
+    adjacency_matrix graph({ "a", "bb", "ccc", "d", "e" });
 
     graph.add_edge(2, 0);
     graph.add_edge(0, 4);

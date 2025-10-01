@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <iterator>
+#include <algorithm>
 
 typedef std::vector<std::string> names;
 
