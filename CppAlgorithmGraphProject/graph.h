@@ -1,8 +1,13 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include <string>
 #include <iterator>
 #include <algorithm>
+#include <iomanip>
+#include <exception>
+#include <map>
+#include <set>
 
 typedef std::vector<std::string> names;
 
@@ -13,6 +18,8 @@ protected:
 	int _edges;
 
 	names _vertex_names;
+
+	int vertex_maxlength() const;
 
 public:
 	graph();

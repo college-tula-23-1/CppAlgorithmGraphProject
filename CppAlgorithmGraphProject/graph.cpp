@@ -1,5 +1,18 @@
 #include "graph.h"
 
+int graph::vertex_maxlength() const
+{
+	auto longest = [](std::string left, std::string right)
+		{
+			return left.length() < right.length();
+		};
+
+	int length_max = std::ranges::max(_vertex_names, longest).length();
+	if (!length_max) length_max = std::to_string(_vertexes).length();
+
+	return length_max;
+}
+
 graph::graph() : graph(0, 0) {}
 
 graph::graph(int vertexes, int edges)

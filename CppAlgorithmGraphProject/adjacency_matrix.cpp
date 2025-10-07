@@ -182,15 +182,11 @@ void adjacency_matrix::remove_edge(std::string vertex_one, std::string vertex_tw
 	this->remove_edge(vertex_one_index, vertex_two_index);
 }
 
+
+
 std::ostream& operator<<(std::ostream& out, const adjacency_matrix& graph)
 {
-	auto longest = [](std::string left, std::string right) 
-		{
-			return left.length() < right.length();
-		};
-
-	int length_max = std::ranges::max(graph._vertex_names, longest).length();
-	if (!length_max) length_max = std::to_string(graph._vertexes).length();
+	int length_max = graph.vertex_maxlength();
 
 	for (int row{}; row < graph._vertexes + 1; row++)
 	{

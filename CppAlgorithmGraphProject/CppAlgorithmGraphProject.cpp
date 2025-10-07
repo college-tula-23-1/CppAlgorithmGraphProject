@@ -1,28 +1,31 @@
 ﻿#include <iostream>
 
 #include "adjacency_matrix.h"
+#include "adjacency_list.h"
 
 int main()
 {
-    adjacency_matrix graph({ "a", "bb", "ccc", "d", "e" });
+    //adjacency_matrix graph(5);
+    adjacency_list graph(5);
 
-    graph.add_edge("ccc", 0);
+    graph.add_edge(0, 1);
+    graph.add_edge(0, 2);
+    graph.add_edge(0, 3);
     graph.add_edge(0, 4);
-    graph.add_edge("d", 0);
-    graph.add_edge(3, "e");
-    graph.add_edge("ccc", "bb");
-    graph.add_edge(1, 3);
+    graph.add_edge(2, 3);
+    graph.add_edge(3, 4);
     
     std::cout << graph << "\n";
 
-    std::cout << graph.add_vertex("ff") << "\n\n";
-    graph.add_edge(5, 1);
+    
+    graph.add_vertex();
     graph.add_edge(2, 5);
-    graph.add_edge("ff", 4);
+    graph.add_edge(3, 5);
 
-    std::cout << graph << "\n\n";
+    std::cout << graph << "\n";
 
-    std::cout << graph.remove_vertex("d") << "\n\n";
+    graph.remove_vertex(2);
 
-    std::cout << graph << "\n\n";
+    std::cout << graph << "\n";
+
 }
