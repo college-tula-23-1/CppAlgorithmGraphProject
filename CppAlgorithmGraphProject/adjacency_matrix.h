@@ -21,6 +21,8 @@ public:
 	void add_edge(int vertex_one, std::string vertex_two) override;
 	void add_edge(std::string vertex_one, std::string vertex_two) override;
 
+	void add_edge(int vertex_one, int vertex_two, int weight);
+
 	int add_vertex() override;
 	int add_vertex(std::string vertex) override;
 

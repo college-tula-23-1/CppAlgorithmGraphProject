@@ -49,6 +49,18 @@ void adjacency_matrix::add_edge(std::string vertex_one, std::string vertex_two)
 	this->add_edge(vertex_index(vertex_one), vertex_index(vertex_two));
 }
 
+void adjacency_matrix::add_edge(int vertex_one, int vertex_two, int weight)
+{
+	if (vertex_one < 0 || vertex_one >= _vertexes
+		|| vertex_two < 0 || vertex_two >= _vertexes)
+		throw std::exception("index of vertex out of range");
+
+	_matrix[vertex_one][vertex_two] = weight;
+	_matrix[vertex_two][vertex_one] = weight;
+
+	_edges++;
+}
+
 int adjacency_matrix::add_vertex()
 {
 	_vertexes++;
